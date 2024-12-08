@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export interface Todo {
   id: string;
@@ -7,19 +7,21 @@ export interface Todo {
   description: string;
   completed: boolean;
   date: string;
+  startDate: string;
 }
 
 interface TodoStore {
   todos: Todo[];
-  addTodo: (todo: Omit<Todo, 'id'>) => void;
+  addTodo: (todo: Omit<Todo, "id">) => void;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
   editTodo: (id: string, updates: Partial<Todo>) => void;
+  getTodosByDate: (date: string) => Todo[];
 }
 
 export const useTodoStore = create<TodoStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       todos: [],
       addTodo: (todo) =>
         set((state) => ({
@@ -41,9 +43,12 @@ export const useTodoStore = create<TodoStore>()(
             todo.id === id ? { ...todo, ...updates } : todo
           ),
         })),
+      getTodosByDate: (date) => {
+        return get().todos.filter((todo) => todo.date === date);
+      },
     }),
     {
-      name: 'todo-storage',
+      name: "todo-storage",
     }
   )
-); 
+);

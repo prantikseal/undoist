@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,7 +12,15 @@ export default {
         montserrat: ["var(--font-montserrat)"],
         bemboExtraBold: ["var(--font-bembo-extra-bold)"],
       },
+      colors: {
+        primary: {
+          dark: "#1a1b26",
+          light: "#24283b",
+        },
+      },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [require("@tailwindcss/typography")],
+};
+
+export default config;
