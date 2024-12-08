@@ -109,7 +109,7 @@ export default function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
                       strokeLinecap="round"
                     />
                   </svg>
-                  <span className="text-xl font-semibold">KeepNotes</span>
+                  <span className="text-xl font-semibold">Undoist</span>
                 </motion.div>
 
                 <motion.h1
