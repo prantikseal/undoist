@@ -8,9 +8,9 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
+        bemboExtraBold: ["var(--font-bembo-extra-bold)"],
       },
     },
   },
