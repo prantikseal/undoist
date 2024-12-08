@@ -4,12 +4,10 @@ import { useState, useEffect } from "react";
 import AddTodoButton from '@/components/AddTodoButton';
 import TodoList from '@/components/TodoList';
 import WelcomeScreen from "@/components/WelcomeScreen";
-import { useTodoStore } from "@/store/todoStore";
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const todos = useTodoStore((state) => state.todos);
 
   useEffect(() => {
     // Check if there are any todos after hydration
